@@ -10,6 +10,14 @@ var addRouter   = require('./routes/add');
 var subRouter   = require('./routes/sub');
 var mulRouter   = require('./routes/mul');
 var sqrRouter   = require('./routes/sqr');
+var homeRouter  = require('./routes/home');
+var cityRouter  = require('./routes/city');
+
+var countryRouter  = require('./routes/country');
+var nameRouter  = require('./routes/name');
+var townRouter  = require('./routes/town');
+var courseRouter  = require('./routes/course');
+
 
 var app = express();
 
@@ -29,6 +37,15 @@ app.get('/add',addRouter);
 app.get('/sub',subRouter);
 app.get('/mul',mulRouter);
 app.get('/sqr',sqrRouter);
+app.get('/home',homeRouter);
+
+app.get('/city/:cityname',cityRouter);
+
+app.get('/country/:countryname',countryRouter);
+app.get('/name/:name1',nameRouter);
+app.get('/town/:townname',townRouter);
+app.get('/course/:coursename',courseRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
