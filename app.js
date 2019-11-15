@@ -17,8 +17,15 @@ var countryRouter  = require('./routes/country');
 var nameRouter  = require('./routes/name');
 var townRouter  = require('./routes/town');
 var courseRouter  = require('./routes/course');
+var bodyParser = require('body-parser');
+var infoRouter  = require('./routes/info');
+var post1Router  = require('./routes/post1');
 
+var post2Router  = require('./routes/post2');
 
+var post3Router  = require('./routes/post3');
+
+var post4Router  = require('./routes/post4');
 var app = express();
 
 // view engine setup
@@ -30,6 +37,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -45,8 +54,13 @@ app.get('/country/:countryname',countryRouter);
 app.get('/name/:name1',nameRouter);
 app.get('/town/:townname',townRouter);
 app.get('/course/:coursename',courseRouter);
+app.post('/info',infoRouter)
 
+app.post('/post1',post1Router)
 
+app.post('/post2',post2Router)
+app.post('/post3',post3Router)
+app.post('/post4',post4Router)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
