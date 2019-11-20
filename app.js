@@ -19,6 +19,9 @@ var townRouter  = require('./routes/town');
 var courseRouter  = require('./routes/course');
 var bodyParser = require('body-parser');
 var infoRouter  = require('./routes/info');
+var loginRouter  = require('./routes/login');
+
+var validateRouter  = require('./routes/validate');
 var post1Router  = require('./routes/post1');
 
 var post2Router  = require('./routes/post2');
@@ -26,6 +29,11 @@ var post2Router  = require('./routes/post2');
 var post3Router  = require('./routes/post3');
 
 var post4Router  = require('./routes/post4');
+
+var form1Router  = require('./routes/form1');
+var form2Router  = require('./routes/form2');
+
+var home1Router  = require('./routes/home1');
 var app = express();
 
 // view engine setup
@@ -54,8 +62,16 @@ app.get('/country/:countryname',countryRouter);
 app.get('/name/:name1',nameRouter);
 app.get('/town/:townname',townRouter);
 app.get('/course/:coursename',courseRouter);
+
+app.get('/login',loginRouter);
+
+app.get('/form1',form1Router);
+
+app.get('/home1',home1Router);
+app.post('/form2',form2Router);
 app.post('/info',infoRouter)
 
+app.post('/validate',validateRouter)
 app.post('/post1',post1Router)
 
 app.post('/post2',post2Router)
